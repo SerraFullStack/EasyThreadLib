@@ -267,7 +267,9 @@ namespace Libs
             EasyThread.StartNew(delegate (EasyThread sender, object args)
             {
                 sender.sleep(timeout);
-                action.Invoke();
+                //checks if thread was stopped
+                if (sender.canRun())
+                    action.Invoke();
             }, false);
 
 
